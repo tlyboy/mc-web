@@ -42,12 +42,16 @@ function App() {
           `https://api.mcsrvstat.us/3/${config.serverAddress}:${config.serverPort}`,
         )
         const data = await res.json()
+        const playerNames = [
+          ...(data.players?.list?.map((p: { name: string }) => p.name) ?? []),
+          ...(data.info?.clean ?? []),
+        ]
         setStatus({
           online: data.online ?? false,
           serverName: data.motd?.clean?.[0],
           version: data.version,
           players: data.players,
-          playerNames: data.info?.clean,
+          playerNames: playerNames.length > 0 ? playerNames : undefined,
         })
       } catch {
         setStatus({ online: false })
