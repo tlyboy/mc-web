@@ -1,0 +1,6 @@
+services:
+  mc-web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - '80:80'
