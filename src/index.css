@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @plugin '@egoist/tailwindcss-icons' {
   scale: 1.2;
 }
@@ -12,43 +10,12 @@ body,
   height: 100%;
 }
 
-html {
-  background: #ededed;
-}
-
-html.dark {
-  background: #191919;
-  color-scheme: dark;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-  z-index: 1;
-}
-
-::view-transition-new(root) {
-  z-index: 9999;
-}
-
-.dark::view-transition-old(root) {
-  z-index: 9999;
-}
-
-.dark::view-transition-new(root) {
-  z-index: 1;
-}
-
 @layer components {
   .btn {
-    @apply inline-block cursor-pointer rounded bg-[#3498db] px-4 py-1 text-white !outline-none hover:bg-[#2980b9] disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/20 px-6 py-3 font-medium text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/30 active:scale-95;
   }
 
-  .icon-btn {
-    @apply inline-block cursor-pointer opacity-75 transition duration-200 ease-in-out select-none hover:text-[#3498db] hover:opacity-100;
+  .btn-copy {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg bg-white/20 p-2 text-white transition-all duration-200 hover:bg-white/30 active:scale-95;
   }
 }

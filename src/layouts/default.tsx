@@ -1,24 +1,25 @@
-import { ThemeProvider } from '@/components/theme-provider'
-import { ModeToggle } from '@/components/mode-toggle'
-
-function Default({ children }: { children: React.ReactNode }) {
+function Default({
+  children,
+  github,
+}: {
+  children: React.ReactNode
+  github: string
+}) {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="flex h-full flex-col items-center justify-center gap-4">
-        {children}
+    <div className="relative h-full">
+      {children}
 
-        <div className="flex items-center gap-2 text-xl">
-          <a
-            className="i-carbon-logo-github icon-btn"
-            href="https://github.com/tlyboy/mc-web"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></a>
-
-          <ModeToggle />
-        </div>
+      {/* 右上角 GitHub 链接 */}
+      <div className="fixed top-4 right-4 z-20">
+        <a
+          className="i-carbon-logo-github text-2xl text-white opacity-75 transition hover:opacity-100"
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+        ></a>
       </div>
-    </ThemeProvider>
+    </div>
   )
 }
 
